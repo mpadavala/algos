@@ -33,8 +33,8 @@ public class Ismorphic {
 		
 	    if(s.length() != t.length()) return false;
 	    
-	    Map<Character, Character> map1 = new HashMap<Character, Character>();
-	    Map<Character, Character> map2 = new HashMap<Character, Character>();   
+	    Map<Character, Character> map = new HashMap<Character, Character>();
+	    Map<Character, Character> mapped = new HashMap<Character, Character>();   
 	        
 	    char[] str1 = s.toCharArray();
 	    char[] str2 = t.toCharArray();
@@ -42,14 +42,12 @@ public class Ismorphic {
 	    for(int i=0; i<s.length(); i++) {
 	    	char char1 = str1[i];
 	    	char char2 = str2[i];
-	    	
-	    	if(map1.get(char1)==null && map2.get(char2)== null) {
-	    		map1.put(char1,  char2);
-	    		map2.put(char2,  char1);
-	    	}else if((map1.get(char1)!=null) || (map2.get(char2) != null)) {
-	    		if(map1.get(char1) != char2 || map2.get(char2) != char1 ) {
-	    			return false;
-	    		}
+	    	if(map.containsKey(char1)) {
+	    		if(! map.get(char1).equals(char2)) return false;
+	    	}else {
+	    		if(mapped.containsKey(char2)) return false;
+	    		map.put(char1, char2);
+	    		mapped.put(char2, char2);
 	    	}
 	    }
 	    return true;

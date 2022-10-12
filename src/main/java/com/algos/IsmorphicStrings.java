@@ -27,7 +27,7 @@ Output: true
  */
 
 
-public class Ismorphic {
+public class IsmorphicStrings {
 	
 	public boolean isIsomorphic(String s, String t) {
 		
@@ -52,6 +52,4 @@ public class Ismorphic {
 	    }
 	    return true;
 	}
-
-	
 }
